@@ -20,7 +20,17 @@ PAY_FREQUENCY_CHOICES = [
 ]
 
 
+class JobSource(BaseModel):
+    """
+    Job listing pages to scrape job posts from
+    """
+    url = models.URLField()
+
+
 class Job(BaseModel):
+    """
+    Individual job posting
+    """
     title = models.CharField(max_length=255)
     company = models.CharField(max_length=255)
     location = models.CharField(max_length=255)  # Job or company's location
@@ -32,3 +42,5 @@ class Job(BaseModel):
 
     application_email = models.EmailField(blank=True, null=True)
     application_link = models.URLField(blank=True, null=True)
+
+    source = models.ForeignKey(JobSource, on_delete=models.SET_NULL, null=True, default=None)
