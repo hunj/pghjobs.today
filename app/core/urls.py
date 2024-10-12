@@ -27,6 +27,7 @@ urlpatterns = [
     # static pages
     path('', TemplateView.as_view(template_name="index.html"), name="index"),
     path('about/', TemplateView.as_view(template_name="about.html"), name="about"),
+    path('contact/', TemplateView.as_view(template_name="contact.html"), name="contact"),
 
     # app pages
     path('search/', JobSearchView.as_view(), name="search"),
