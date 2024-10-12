@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+from jobs.views import JobSearchView
+
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -27,5 +29,6 @@ urlpatterns = [
     path('about/', TemplateView.as_view(template_name="about.html"), name="about"),
 
     # app pages
+    path('search/', JobSearchView.as_view(), name="search"),
     path('jobs/', include('jobs.urls')),
 ]

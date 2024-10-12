@@ -39,6 +39,7 @@ class Job(BaseModel):
     description = models.TextField()
     pay_range = models.CharField(max_length=100, blank=True, null=True)
     pay_frequency = models.CharField(max_length=2, choices=PAY_FREQUENCY_CHOICES, default='SA')
+    is_active = models.BooleanField(default=True)  # whether this job posting is open or not
 
     application_email = models.EmailField(blank=True, null=True)
     application_link = models.URLField(blank=True, null=True)
