@@ -1,11 +1,13 @@
-<div class="field is-grouped is-horizontal">
-    <div class="control is-expanded has-icons-left">
-        <input class="input" type="text" placeholder="Enter job title, keyword, or company name...">
-        <span class="icon is-small is-left">
-            <i class="fas fa-search"></i>
-        </span>
+<form action="{% url 'search' %}">
+    <div class="field is-grouped is-horizontal">
+        <div class="control is-expanded has-icons-left">
+            <input class="input" type="text" name="q" placeholder="Enter job title, keyword, or company name..." value="{{ request.GET.q }}">
+            <span class="icon is-small is-left">
+                <i class="fas fa-search"></i>
+            </span>
+        </div>
+        <div class="control">
+            <button type="submit" class="button is-link">Search</button>
+        </div>
     </div>
-    <div class="control">
-        <button class="button is-link">Search</button>
-    </div>
-</div>
+</form>
