@@ -11,14 +11,23 @@
 {% block body %}
 {% load humanize %}
 <section class="section container">
+    <h1 class="subtitle">{{ jobs|length }} job(s) found{% if request.GET.q %} matching query '{{ request.GET.q }}'{% endif %}.</h1>
+
     {% for job in jobs %}
     <div class="content">
         <a href="{% url 'job_detail' job.uuid %}">{{ job.title }}</a>
-        <p>{{ job.description | truncatewords:30 }}</p>
-        <p><i class="fa fa-building"></i> {{ job.company }}</p>
-        <p><i class="fa fa-location-dot"></i>{{ job.location }} {% if job.is_remote %}(Remote){% endif %}</p>
+        <p>
+            <i class="fa fa-building"></i> {{ job.company }}<br />
+            <i class="fa fa-location-dot"></i>{{ job.location }} {% if job.is_remote %}(Remote){% endif %}
+        </p>
+        <p>{{ job.description | safe | striptags | truncatewords:30 }}</p>
         <small>Created {{ job.created_at }}</small>
     </div>
+
+    {% if not forloop.last %}
+    <hr />
+    {% endif %}
+
     {% endfor %}
 
 </section>
