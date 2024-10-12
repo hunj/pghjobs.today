@@ -1,6 +1,28 @@
+{% extends 'base.html' %}
 
-<h1>{{ job.title }}</h1>
-<p>{{ job.company }}</p>
-<p>{{ job.location }} {% if job.is_remote %}(Remote){% endif %}</p>
-<p>Published: {{ job.created_at|date }}</p>
-<p>Last Edited: {{ job.updated_at|date }}</p>
+{% block header %}
+<section class="section has-background-light">
+    <div class="container">
+    {% include 'components/search_cta.html' %}
+    </div>
+</section>
+{% endblock %}
+
+{% block body %}
+{% load humanize %}
+<section class="section container">
+    <div class="content">
+        <h1>{{ job.title }}</h1>
+        <h2>{{ job.company }}</h2>
+        <p>{{ job.location }} {% if job.is_remote %}(Remote){% endif %}</p>
+        {% if job.application_email %}
+        <a class="button is-link" href="mailto:{{ job.application_email }}" target="_blank">E-mail Application</a>
+        {% elif job.application_link %}
+        <a class="button is-link" href="{{ job.application_link }}" target="_blank">View & Apply</a>
+        {% endif %}
+    </div>
+    <hr />
+    <div class="content">{{ job.description|safe }}</div>
+    <small>Published {{ job.created_at|naturalday }}, last edited {{ job.updated_at|naturalday }}.</small>
+</section>
+{% endblock %}

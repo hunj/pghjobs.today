@@ -1,24 +1,27 @@
 {% extends 'base.html' %}
 
 {% block header %}
-
-{% include 'components/search_cta.html' %}
-
+<section class="section has-background-light">
+    <div class="container">
+        {% include 'components/search_cta.html' %}
+    </div>
+</section>
 {% endblock %}
 
 {% block body %}
+{% load humanize %}
+<section class="section container">
+    {% for job in jobs %}
+    <div class="content">
+        <a href="{% url 'job_detail' job.uuid %}">{{ job.title }}</a>
+        <p>{{ job.description | truncatewords:30 }}</p>
+        <p><i class="fa fa-building"></i> {{ job.company }}</p>
+        <p><i class="fa fa-location-dot"></i>{{ job.location }} {% if job.is_remote %}(Remote){% endif %}</p>
+        <small>Created {{ job.created_at }}</small>
+    </div>
+    {% endfor %}
 
+</section>
 
-{% for job in jobs %}
-
-    <a href="{% url 'job_detail' job.uuid %}">{{ job.title }}</a>
-    <p>
-        {{ job.description | truncatewords:30 }}
-    </p>
-    <p><i class="fa fa-building"></i> {{ job.company }}</p>
-    <p><i class="fa fa-location-dot"></i>{{ job.location }} {% if job.is_remote %}(Remote){% endif %}</p>
-    <p>Published: {{ job.created_at|date }}</p>
-
-{% endfor %}
 
 {% endblock %}
