@@ -17,12 +17,13 @@ services:
   db:
     image: postgres:15
     restart: always
+    shm_size: 128mb
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./db.env
     ports:
-     - 15432:15432
+     - 15432:5432
     healthcheck:
       test: pg_isready -d $$POSTGRES_DB -U $$POSTGRES_USER
       interval: 1s
