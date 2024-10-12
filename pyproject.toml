@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "job-board"
+version = "0.1.0"
+description = ""
+authors = ["hunj"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "^5.1.2"
+psycopg2 = "^2.9.9"
+gunicorn = "^23.0.0"
+django-extensions = "^3.2.3"
+django-htmx = "^1.19.0"
+werkzeug = "^3.0.4"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.11.2"
+flake8 = "^7.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

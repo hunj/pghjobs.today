@@ -1,0 +1,45 @@
+services:
+  app:
+    build: .
+    working_dir: /app/
+    command: /bin/bash /app/bin/boot.sh
+    volumes:
+      - ./app:/app
+    expose:
+      - 8001  # <= nginx:8080
+    env_file:
+      - ./.env
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./db.env
+    ports:
+     - 15432:15432
+    healthcheck:
+      test: pg_isready -d $$POSTGRES_DB -U $$POSTGRES_USER
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+  nginx:
+    build: ./nginx
+    restart: always
+    ports:
+      - 18080:8080  # => app:8001
+    expose:
+      - 8080
+    volumes:
+      - ./app/staticfiles:/staticfiles:ro
+    depends_on:
+      - app
+
+volumes:
+  postgres_data:
