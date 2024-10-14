@@ -41,3 +41,6 @@ class Job(BaseModel):
     application_link = models.URLField(blank=True, null=True)
 
     source = models.ForeignKey(JobSource, on_delete=models.SET_NULL, null=True, default=None)
+
+    def __str__(self):
+        return f"{self.title} at {self.company}"
