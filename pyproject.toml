@@ -14,7 +14,13 @@ django-extensions = "^3.2.3"
 django-htmx = "^1.19.0"
 werkzeug = "^3.0.4"
 requests = "^2.32.3"
-celery = "^5.4.0"
+celery = {extras = ["redis"], version = "^5.4.0"}
+beautifulsoup4 = "^4.12.3"
+redis = "^5.1.1"
+django-redis = "^5.4.0"
+flower = "^2.0.1"
+django-celery-results = "^2.5.1"
+django-celery-beat = "^2.7.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.11.2"

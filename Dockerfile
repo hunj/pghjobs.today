@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     less \
     libpq-dev \
+    netcat-traditional \
     vim
 
 RUN pip install --upgrade pip

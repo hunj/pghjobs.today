@@ -1,15 +1,21 @@
+name: job-board
+
+x-django: &django
+  build: .
+  working_dir: /app/
+  volumes:
+    - ./app:/app
+  env_file:
+    - ./.env
+  restart: always
+
+
 services:
   app:
-    build: .
-    working_dir: /app/
+    <<: *django
     command: /bin/bash /app/bin/boot.sh
-    volumes:
-      - ./app:/app
     expose:
       - 8001  # <= nginx:8080
-    env_file:
-      - ./.env
-    restart: always
     depends_on:
       db:
         condition: service_healthy
@@ -41,5 +47,39 @@ services:
     depends_on:
       - app
 
+  redis:
+    image: redis:latest
+    restart: always
+    expose:
+      - 6379
+    command: redis-server
+    volumes:
+      - redis_data:/data
+
+
+  celery_worker:
+    <<: *django
+    command: celery -A core worker -l INFO
+    depends_on:
+      - redis
+      - db
+
+  celery_beat:
+    <<: *django
+    command: celery -A core beat -l INFO
+    depends_on:
+      - redis
+      - db
+
+  flower:
+    <<: *django
+    command: celery -A core --broker="redis://redis:6379/0" flower
+    ports:
+      - 15557:5555
+    depends_on:
+      - redis
+      - db
+
 volumes:
   postgres_data:
+  redis_data:
