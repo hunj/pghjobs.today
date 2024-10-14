@@ -22,7 +22,7 @@ from jobs.views import JobSearchView
 
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('dahntahn/', admin.site.urls),
 
     # static pages
     path('', TemplateView.as_view(template_name="index.html"), name="index"),
