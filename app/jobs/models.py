@@ -1,6 +1,9 @@
 from django.db import models
 from common.models import BaseModel
 
+from scraper.models import JobSource
+
+
 # Choices for Job Types
 JOB_TYPE_CHOICES = [
     ('FT', 'Full-Time'),
@@ -18,13 +21,6 @@ PAY_FREQUENCY_CHOICES = [
     ('OT', 'One-time'),
     ('NA', 'N/A'),
 ]
-
-
-class JobSource(BaseModel):
-    """
-    Job listing pages to scrape job posts from
-    """
-    url = models.URLField()
 
 
 class Job(BaseModel):
