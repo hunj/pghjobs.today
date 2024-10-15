@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_extensions',
     'celery',
-    'django_celery_results',
     'django_celery_beat',
 
     'jobs',

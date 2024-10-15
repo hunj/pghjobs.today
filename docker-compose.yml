@@ -57,14 +57,14 @@ services:
       - redis_data:/data
 
 
-  celery_worker:
+  celery:
     <<: *django
     command: celery -A core worker -l INFO
     depends_on:
       - redis
       - db
 
-  celery_beat:
+  celery-beat:
     <<: *django
     command: celery -A core beat -l INFO
     depends_on:
