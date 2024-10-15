@@ -14,5 +14,10 @@ fi
 python manage.py migrate
 
 # Start Gunicorn
-echo "Starting Gunicorn..."
-python manage.py runserver_plus 0.0.0.0:8001
+echo "Starting Server..."
+if [ "$DEBUG" = "1" ]
+then
+  python manage.py runserver_plus 0.0.0.0:8001
+else
+  gunicorn core.wsgi:application --bind 0.0.0.0:8001 --reload
+fi
