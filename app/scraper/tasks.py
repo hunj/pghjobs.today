@@ -56,7 +56,7 @@ def discover_jobs(
                 logger.debug(f"Found {link_tag['href']}, adding to scrape task queue...")
                 scrape_job_from.delay(link_tag['href'])
 
-    logger.debug(f"Parsed {len(to_visit)} job posting URLs from {job_source.url}:\n{'\n'.join(to_visit)}")
+    logger.debug(f"Parsed {len(to_visit)} job posting URLs from {job_source.url}: {to_visit}")
 
 
 @shared_task
