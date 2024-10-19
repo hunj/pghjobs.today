@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "job-board"
+name = "app"
 version = "0.1.0"
 description = ""
 authors = ["hunj"]
