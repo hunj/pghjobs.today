@@ -3,9 +3,6 @@
 {% block header %}
 <section class="section has-background-dark has-text-centered has-text-light">
     <div class="container">
-        <h1 class="title is-1 has-text-warning">
-            PGH Jobs Today
-        </h1>
         {% include 'components/search_cta.html' %}
     </div>
 </section>
@@ -24,7 +21,7 @@
             <i class="fa fa-location-dot"></i>{{ job.location }} {% if job.is_remote %}(Remote){% endif %}
         </p>
         <p>{{ job.description | safe | striptags | truncatewords:30 }}</p>
-        <small>Created {{ job.created_at }}</small>
+        <small>Created {{ job.created_at }} & Last Updated {{ job.updated_at }}</small>
     </div>
 
     {% if not forloop.last %}

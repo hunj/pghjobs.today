@@ -10,7 +10,7 @@
                 Pittsburgh Jobs Today
             </h1>
             <h2 class="subtitle has-text-light">
-                Search job openings in Pittsburgh, AI-curated* & hand-picked.
+                Search through real job openings, no fake/spam postings.
             </h2>
             <div class="column is-8 is-offset-2">
                 {% include 'components/search_cta.html' %}
@@ -23,7 +23,7 @@
 <section class="section has-background-light">
     <div class="columns container">
         <div class="column">
-            <div class="card">
+            <div class="card p-3">
                 <div class="card-image has-text-centered is-size-1">
                     <i class="fa fa-paw"></i>
                 </div>
@@ -39,23 +39,7 @@
             </div>
         </div>
         <div class="column">
-            <div class="card">
-                <div class="card-image has-text-centered is-size-1">
-                    <i class="fa fa-eye"></i>
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        <h4>AI-Curated*, with Love</h4>
-                        <p class="has-text-weight-light">
-                            The word "ai" means "love" (愛) in Japanese -- because finding the job you'll love and enjoy is more than just algorithms.
-                        </p>
-                        <a href="{% url 'about' %}">Learn more</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="card">
+            <div class="card p-3">
                 <div class="card-image has-text-centered is-size-1">
                     <i class="fa fa-hourglass"></i>
                 </div>
@@ -63,7 +47,7 @@
                     <div class="content">
                         <h4>Feedback System</h4>
                         <p class="has-text-weight-light">
-                            Our internal team carefully monitors and filters each job posting to ensure that only quality jobs are listed on this website.
+                            Our team monitors and filters each job posting to ensure that only quality jobs are listed on this website.
                         </p>
                         <a href="{% url 'about' %}">Learn more</a>
                     </div>
@@ -85,6 +69,9 @@
     <p>
         Explore meaningful careers with us—because finding the right job should feel less like a burden and more like finding something you love.
     </p>
+
+    <hr />
+
     <div class="column is-8 is-offset-2">
         {% include 'components/search_cta.html' %}
     </div>
