@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import JobSource
 
-# Register your models here.
+
+class JobSourceAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(JobSource, JobSourceAdmin)
