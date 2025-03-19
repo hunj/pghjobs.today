@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
 
     'jobs',
+    'organizations',
     'scraper',
 ]
 

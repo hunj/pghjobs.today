@@ -17,9 +17,8 @@ class JobSearchView(ListView):
         return context
 
     def get_queryset(self):
-        qs = Job.objects.all()
+        qs = Job.objects.all().prefetch_related()
         if query := self.request.GET.get('q'):
-            print(query)
             qs = qs.filter(
                 Q(title__icontains=query) |
                 Q(location__icontains=query) |
