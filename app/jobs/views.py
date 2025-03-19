@@ -8,6 +8,7 @@ from jobs.models import Job
 
 class JobSearchView(ListView):
     model = Job
+    template_name = 'job_list.html'
     paginate_by = 15
     context_object_name = "jobs"
 
@@ -29,4 +30,5 @@ class JobSearchView(ListView):
 
 class JobDetailView(DetailView):
     model = Job
+    template_name = 'job_detail.html'
     context_object_name = "job"

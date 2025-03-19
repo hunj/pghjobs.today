@@ -17,11 +17,11 @@
     <div class="content">
         <a href="{% url 'job_detail' job.uuid %}">{{ job.title }}</a>
         <p>
-            <i class="fa fa-building"></i> {{ job.company }}<br />
-            <i class="fa fa-location-dot"></i>{{ job.location }} {% if job.is_remote %}(Remote){% endif %}
+            <i class="fa fa-building"></i> {{ job.organization }}<br />
+            <i class="fa fa-location-dot"></i> {{ job.location }} {% if job.is_remote %}(Remote){% endif %}
         </p>
         <p>{{ job.description | safe | striptags | truncatewords:30 }}</p>
-        <small>Created {{ job.created_at }} & Last Updated {{ job.updated_at }}</small>
+        <small>Created {{ job.created_at|timesince }} ago & Last Updated {{ job.updated_at|timesince }} ago</small>
     </div>
 
     {% if not forloop.last %}
